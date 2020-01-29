@@ -1,0 +1,31 @@
+@startuml
+
+frame UI {
+    [Search controller]
+    [Cart controller]
+}
+
+frame Services {
+    [Search service]
+    [Cart service]
+    [Stock service]
+    [Order service]
+}
+
+frame Storage {
+    [Product storage]
+    [Order storage]
+    [Cart storage]
+    [Stock storage]
+}
+
+[Search controller] --> [Search service]
+[Search service] --> [Stock service]
+[Cart controller] --> [Cart service]
+[Cart controller] --> [Order service]
+[Search service] --> [Product storage]
+[Stock service] --> [Stock storage]
+[Order service] --> [Order storage]
+[Cart service] --> [Cart storage]
+
+@enduml

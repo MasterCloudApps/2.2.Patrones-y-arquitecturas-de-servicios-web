@@ -1,0 +1,14 @@
+@startuml
+
+Client --> Component : "accesses"
+Component --> TransferObject : "creates/uses"
+PresComponent --|> Component
+BizComponent --|> Component
+IntComponent --|> Component
+
+Class TransferObject <<POJO>>
+Class PresComponent <<PresentationTier>>
+Class BizComponent <<BusinessTier>>
+Class IntComponent <<IntegrationTier>>
+
+@enduml
