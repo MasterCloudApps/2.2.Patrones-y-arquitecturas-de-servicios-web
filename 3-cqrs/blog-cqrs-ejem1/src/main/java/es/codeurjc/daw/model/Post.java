@@ -1,9 +1,7 @@
 package es.codeurjc.daw.model;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,15 +9,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonView;
-
 @Entity
 public class Post {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id = -1;
+	private long id;
 
 	private String title;
 
@@ -28,6 +23,9 @@ public class Post {
 	@OneToMany
 	private List<Comment> comments = new ArrayList<>();
 
+	public Post() {
+	}
+	
 	public Post(String title, String content) {
 		this.title = title;
 		this.content = content;
@@ -45,12 +43,24 @@ public class Post {
 		return title;
 	}
 
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	
 	public String getContent() {
 		return content;
+	}
+	
+	public void setContent(String content) {
+		this.content = content;
 	}
 
 	public List<Comment> getComments() {
 		return comments;
+	}
+	
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
 	}
 
 	public void deleteComment(Comment comment) {
