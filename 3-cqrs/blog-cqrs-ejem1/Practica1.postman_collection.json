@@ -1,0 +1,225 @@
+{
+	"info": {
+		"_postman_id": "2410ffcc-df19-4b0a-a77c-d2fc19a4c448",
+		"name": "Practica1",
+		"description": "# API REST - PRACTICA 1\n\nDocumentación  básica de las operaciones soportadas por la API REST de la **Práctica 1 - Tecnologías de Servicios de Internet**\n\n\n## GET ALL POST INFO\n\n_Obtener un listado con el identificador y el título de cada uno de los posts_\n\n* #### MÉTODO GET\n*  #### URL:  http://localhost:8080/api/posts\n* #### RESPONSE\n\t```\n\t{ \n\t\t\"0\": {\n\t\t\t\"id\": 0,\n\t\t\t\"title\": \"Master Cloud Apps\"\n\t\t\t}\n\t}\n\t```\n\n## GET POST INFO\n\n_Obtener toda la información de un post determinado (comentarios incluídos)_\n\n* #### MÉTODO GET\n*  #### URL:  http://localhost:8080/api/post/0\n* #### RESPONSE\n\t```\n\t{ \n\t\t\"id\": 0,\n\t\t\"title\": \"Master Cloud Apps\",\n\t\t\"body\": \"Tecnologias de Servicios de Internet\",\n\t\t\"commentList\": [\n\t\t\t{\n\t\t\t\t\"id\": 0,\n\t\t\t\t\"name\": \"Carlos\",\n\t\t\t\t\"comment\": \"Comentario de prueba\"\n\t\t\t}\n\t\t]\n\t}\n\t```\n\n## CREATE POST\n\n_Crear un post_\n\n* #### MÉTODO POST\n*  #### URL:  http://localhost:8080/api/posts\n*  #### BODY\n\t```\n\t{\n\t\t\"title\": \"Practica 1\",\n\t\t\"body\": \"Creacion de post desde API REST\"\n\t}\n\t```\n* #### RESPONSE\n\t```\n\t{ \n\t\t\"id\": 1, \n\t\t\"title\": \"Practica 1\", \n\t\t\"body\": \"Creacion de post desde API REST\",\n\t\t\"commentList\": []\n\t}\n\t```\n\n## CREATE COMMENT\n\n_Obtener toda la información de un post determinado (comentarios incluídos)_\n\n* #### MÉTODO POST\n*  #### URL:  http://localhost:8080/api/post/0/comment\n*  #### BODY\n\t```\n\t{\n\t\t\"name\": \"Carlos\",\n\t\t\"comment\": \"Comentario consumiendo la API REST\"\n\t}\n\t```\n\t\n* #### RESPONSE\n\t```\n\t{ \n\t\t\"id\": 1,\n\t\t\"name\": \"Carlos\",\n\t\t\"comment\": \"Comentario consumiendo la API REST\"\n\t}\n\t```\n\n## DELETE COMMENT\n\n_Borrar un comentario_\n\n* #### MÉTODO DELETE\n* \n*  #### URL:  http://localhost:8080/api/post/0/comment/0\n* \n* #### RESPONSE\n\t```\n\t{ \n\t\t\"id\": 0,\n\t\t\"name\": \"Carlos\",\n\t\t\"comment\": \"Comentario de prueba\"\n\t}\n\t```",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET ALL POSTS",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/post",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"post"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET POST",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/post/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"post",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NEW POST",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\": \"Practica 1\",\n\t\"content\": \"Creacion de post desde API REST\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/post",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"post"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NEW COMMENT",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"author\": \"Pablo\",\n\t\"message\": \"Este comentario se ha añadido desde la API REST\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/post/1/comment",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"post",
+						"1",
+						"comment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE COMMENT",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/post/1/comment/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"post",
+						"1",
+						"comment",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "da8f1855-c6a3-4b1b-b9ef-01cbe1920f87",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "2b78f371-feb7-4f66-a2f6-a431c819bade",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
