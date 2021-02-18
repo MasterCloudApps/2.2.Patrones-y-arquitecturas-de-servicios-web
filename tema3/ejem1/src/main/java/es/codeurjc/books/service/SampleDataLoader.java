@@ -5,17 +5,17 @@ import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import es.codeurjc.books.model.Book;
-import es.codeurjc.books.model.Comment;
-import es.codeurjc.books.model.User;
-import es.codeurjc.books.repository.BookRepository;
-import es.codeurjc.books.repository.UserRepository;
+import es.codeurjc.books.infrastructure.model.BookEntity;
+import es.codeurjc.books.infrastructure.model.CommentEntity;
+import es.codeurjc.books.infrastructure.model.UserEntity;
+import es.codeurjc.books.infrastructure.repository.BookJpaRepository;
+import es.codeurjc.books.infrastructure.repository.UserRepository;
 
 @Service
 public class SampleDataLoader {
 
 	@Autowired
-	private BookRepository books;
+	private BookJpaRepository books;
 	
 	@Autowired
 	private UserRepository users;
@@ -23,26 +23,26 @@ public class SampleDataLoader {
 	@PostConstruct
 	public void init() {
 
-		User user1 = new User("pepe", "pepe@gmail.com");
-		User user2 = new User("juan", "juan@hotmail.com");
-		User user3 = new User("rafa", "rafa85@terra.es");
+		UserEntity user1 = new UserEntity("pepe", "pepe@gmail.com");
+		UserEntity user2 = new UserEntity("juan", "juan@hotmail.com");
+		UserEntity user3 = new UserEntity("rafa", "rafa85@terra.es");
 
 		users.save(user1);
 		users.save(user2);
 		users.save(user3);
 		
-		Book book1 = new Book("Don Quijote", "En un lugar de la Mancha",
+		BookEntity book1 = new BookEntity("Don Quijote", "En un lugar de la Mancha",
 				"Cervantes", "Desconocido", 1605);
 
-		book1.addComment(new Comment(user1, 5, "un clásico"));
-		book1.addComment(new Comment(user2, 0, "no me ha gustado"));
+		book1.addComment(new CommentEntity(user1, 5, "un clásico"));
+		book1.addComment(new CommentEntity(user2, 0, "no me ha gustado"));
 		
-		Book book2 = new Book("El principito", "Un piloto se pierde en el Sáhara",
+		BookEntity book2 = new BookEntity("El principito", "Un piloto se pierde en el Sáhara",
 				"Antoine de Saint-Exupéry", "Gallimard", 1943);
 		
-		book2.addComment(new Comment(user2, 0, "este tampoco"));
+		book2.addComment(new CommentEntity(user2, 0, "este tampoco"));
 		
-		Book book3 = new Book("Lazarillo de Tormes", "La vida de Lazarillo de Tormes y de sus fortunas y adversidades",
+		BookEntity book3 = new BookEntity("Lazarillo de Tormes", "La vida de Lazarillo de Tormes y de sus fortunas y adversidades",
 				"Desconocido", "Acceso público", 1554);
 		
 		books.save(book1);		

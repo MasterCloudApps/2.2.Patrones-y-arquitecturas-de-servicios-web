@@ -1,4 +1,4 @@
-package es.codeurjc.books.model;
+package es.codeurjc.books.infrastructure.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -6,29 +6,24 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import com.fasterxml.jackson.annotation.JsonView;
-
 @Entity
-public class User {
+public class UserEntity {
 	
 	public interface Basic {}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@JsonView(Basic.class)
 	private Long id;
 
 	@Column(unique = true)
-	@JsonView(Basic.class)
 	private String nick;
 
-	@JsonView(Basic.class)
 	private String mail;
 
-	public User() {
+	public UserEntity() {
 	}
 
-	public User(String nick, String mail) {
+	public UserEntity(String nick, String mail) {
 		this.nick = nick;
 		this.mail = mail;
 	}

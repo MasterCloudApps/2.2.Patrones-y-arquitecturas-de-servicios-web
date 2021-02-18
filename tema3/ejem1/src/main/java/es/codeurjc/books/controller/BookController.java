@@ -15,9 +15,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-import es.codeurjc.books.model.Book;
-import es.codeurjc.books.model.Comment;
-import es.codeurjc.books.model.User;
+import es.codeurjc.books.domain.FullBookDto;
+import es.codeurjc.books.infrastructure.model.BookEntity;
+import es.codeurjc.books.infrastructure.model.CommentEntity;
+import es.codeurjc.books.infrastructure.model.UserEntity;
 import es.codeurjc.books.service.BookService;
 
 @RestController
@@ -26,33 +27,35 @@ public class BookController {
 	@Autowired
 	private BookService books;
 
-	@JsonView(Book.Basic.class)
 	@GetMapping("/books/")
-	public Collection<Book> getBooks() {
+	public Collection<BookResponseDto> getBooks() {
 		return books.findAll();
 	}
 
-	interface BookWithCommentsAndUser extends Book.Basic, Book.WithComment,
-			Comment.Basic, Comment.WithUser, User.Basic {
-	}
-
 	@GetMapping("/books/{id}")
-	@JsonView(BookWithCommentsAndUser.class)
-	public Book getBook(@PathVariable long id) {
+	public BookResponseDto getBook(@PathVariable long id) {
 
 		return books.findById(id).orElseThrow();
 	}
 
 	@PostMapping("/books/")
-	@JsonView(Book.Basic.class)
-	public ResponseEntity<Book> createBook(@RequestBody Book book) {
+	public ResponseEntity<BookResponseDto> createBook(@RequestBody BookRequestDto book) {
 
-		books.save(book);
+		FullBookDto fullBook = books.save(book);
+		
+		// Transform fullBook into BookResponseDto
+		BookResponseDto responseBookDto = new BookResponseDto(
+				fullBook.getId(), 
+				fullBook.getTitle(), 
+				fullBook.getSummary(), 
+				fullBook.getAuthor(), 
+				fullBook.getEditorial(), 
+				fullBook.getPublishYear()); 
 
 		URI location = fromCurrentRequest().path("/{id}")
-				.buildAndExpand(book.getId()).toUri();
+				.buildAndExpand(fullBook.getId()).toUri();
 
-		return ResponseEntity.created(location).body(book);
+		return ResponseEntity.created(location).body(responseBookDto);
 	}
 
 }

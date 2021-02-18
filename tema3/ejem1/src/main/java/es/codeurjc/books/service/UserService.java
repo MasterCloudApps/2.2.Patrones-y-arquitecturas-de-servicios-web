@@ -6,8 +6,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import es.codeurjc.books.model.User;
-import es.codeurjc.books.repository.UserRepository;
+import es.codeurjc.books.infrastructure.model.UserEntity;
+import es.codeurjc.books.infrastructure.repository.UserRepository;
 
 @Service
 public class UserService {
@@ -15,20 +15,20 @@ public class UserService {
 	@Autowired
 	private UserRepository users;
 
-	public void save(User user) {
+	public void save(UserEntity user) {
 		users.save(user);
 	}
 
-	public void replace(User updatedUser) {
+	public void replace(UserEntity updatedUser) {
 		users.findById(updatedUser.getId()).orElseThrow();
 		users.save(updatedUser);
 	}
 
-	public List<User> findAll() {
+	public List<UserEntity> findAll() {
 		return users.findAll();
 	}
 
-	public Optional<User> findById(long id) {
+	public Optional<UserEntity> findById(long id) {
 		return users.findById(id);
 	}
 	
@@ -40,7 +40,7 @@ public class UserService {
 		users.deleteById(id);
 	}
 
-	public Optional<User> findByNick(String nick) {
+	public Optional<UserEntity> findByNick(String nick) {
 		return users.findByNick(nick);
 	}
 }

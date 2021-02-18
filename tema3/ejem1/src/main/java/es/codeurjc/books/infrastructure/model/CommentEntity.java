@@ -1,4 +1,4 @@
-package es.codeurjc.books.model;
+package es.codeurjc.books.infrastructure.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,43 +10,34 @@ import javax.persistence.ManyToOne;
 import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
-public class Comment {
-
-	public interface Basic {}
-	public interface WithBook {}
-	public interface WithUser {}
+public class CommentEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@JsonView(Basic.class)
 	private Long id;
 
 	@Column(columnDefinition = "TEXT")
-	@JsonView(Basic.class)
 	private String publishtext;
 
-	@JsonView(Basic.class)
 	private int punctuation;
 	
 	@ManyToOne
-	@JsonView(WithBook.class)
-	private Book book;
+	private BookEntity book;
 	
 	@ManyToOne
-	@JsonView(WithUser.class)
-	private User user;
+	private UserEntity user;
 
-	public Comment() {
+	public CommentEntity() {
 	}
 
-	public Comment(User user, int punctuation, String publishtext) {
+	public CommentEntity(UserEntity user, int punctuation, String publishtext) {
 
 		this.user = user;
 		this.publishtext = publishtext;
 		this.punctuation = punctuation;
 	}
 
-	public Comment(Comment comment) {
+	public CommentEntity(CommentEntity comment) {
 		this.id = comment.id;
 		this.user = comment.user;
 		this.publishtext = comment.publishtext;
@@ -62,15 +53,15 @@ public class Comment {
 		this.id = id;
 	}
 
-	public User getUser() {
+	public UserEntity getUser() {
 		return user;
 	}
 	
-	public void setUser(User user) {
+	public void setUser(UserEntity user) {
 		this.user = user;
 	}
 
-	public void setName(User user) {
+	public void setName(UserEntity user) {
 		this.user = user;
 	}
 
@@ -90,11 +81,11 @@ public class Comment {
 		this.punctuation = punctuation;
 	}
 
-	public Book getBook() {
+	public BookEntity getBook() {
 		return book;
 	}
 
-	public void setBook(Book book) {
+	public void setBook(BookEntity book) {
 		this.book = book;
 	}	
 }

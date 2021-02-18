@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import es.codeurjc.books.model.Comment;
-import es.codeurjc.books.model.User;
+import es.codeurjc.books.infrastructure.model.CommentEntity;
+import es.codeurjc.books.infrastructure.model.UserEntity;
 import es.codeurjc.books.service.CommentService;
 import es.codeurjc.books.service.UserService;
 
@@ -30,7 +30,7 @@ public class UserController {
 	@Autowired
 	private CommentService comments;
 
-	public ResponseEntity<?> createUser(@RequestBody User user) {
+	public ResponseEntity<?> createUser(@RequestBody UserEntity user) {
 
 		try {
 
@@ -48,7 +48,7 @@ public class UserController {
 	}
 
 	@PutMapping("/users/{id}")
-	public User replaceUser(@RequestBody User newUser, @PathVariable long id) {
+	public UserEntity replaceUser(@RequestBody UserEntity newUser, @PathVariable long id) {
 
 		newUser.setId(id);
 		users.replace(newUser);
@@ -56,21 +56,21 @@ public class UserController {
 	}
 
 	@GetMapping("/users/")
-	public List<User> getUsers() {
+	public List<UserEntity> getUsers() {
 		return users.findAll();
 	}
 
 	@GetMapping("/users/{id}")
-	public User getUser(@PathVariable long id) {
+	public UserEntity getUser(@PathVariable long id) {
 		return users.findById(id).orElseThrow();
 	}
 
 	@DeleteMapping("/users/{id}")
-	public ResponseEntity<User> deleteUser(@PathVariable long id) {
+	public ResponseEntity<UserEntity> deleteUser(@PathVariable long id) {
 
-		User user = users.findById(id).orElseThrow();
+		UserEntity user = users.findById(id).orElseThrow();
 
-		List<Comment> comment = comments.findAllCommentsByUserId(id);
+		List<CommentEntity> comment = comments.findAllCommentsByUserId(id);
 		if (comment.size() == 0) {
 			users.deleteById(id);
 			return ResponseEntity.ok(user);

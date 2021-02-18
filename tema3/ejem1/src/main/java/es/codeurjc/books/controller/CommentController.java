@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-import es.codeurjc.books.model.Book;
-import es.codeurjc.books.model.Comment;
+import es.codeurjc.books.infrastructure.model.BookEntity;
+import es.codeurjc.books.infrastructure.model.CommentEntity;
 import es.codeurjc.books.service.BookService;
 import es.codeurjc.books.service.CommentService;
 import es.codeurjc.books.service.UserService;
@@ -35,18 +35,13 @@ public class CommentController {
 	@Autowired
 	private BookService books;
 
-	interface CommentWithBookId
-			extends Book.WithId, Comment.WithBook, Comment.Basic {
-	}
-
 	@PostMapping("books/{id}/comments/")
-	@JsonView(CommentWithBookId.class)
-	public ResponseEntity<?> createComment(@RequestBody Comment comment,
+	public ResponseEntity<?> createComment(@RequestBody CommentRequestDto comment,
 			@PathVariable Long id) {
 
 		String nick = null;
-		if (comment.getUser() != null) {
-			nick = comment.getUser().getNick();
+		if (comment.getUserNick() != null) {
+			nick = comment.getUserNick();
 		}
 
 		if (nick == null) {
@@ -65,12 +60,12 @@ public class CommentController {
 
 	@JsonView(CommentWithBookId.class)
 	@DeleteMapping("books/{bookId}/comments/{id}")
-	public Comment deleteComment(@PathVariable Long bookId,
+	public CommentEntity deleteComment(@PathVariable Long bookId,
 			@PathVariable Long id) {
 
-		Comment comment = comments.findById(id).orElseThrow();
+		CommentEntity comment = comments.findById(id).orElseThrow();
 
-		Comment commentToReturn = new Comment(comment);
+		CommentEntity commentToReturn = new CommentEntity(comment);
 
 		books.deleteCommentById(bookId, id);
 
@@ -79,7 +74,7 @@ public class CommentController {
 
 	@GetMapping("/users/{id}/comments")
 	@JsonView(CommentWithBookId.class)
-	public List<Comment> getAllCommentsFromUser(@PathVariable long id) {
+	public List<CommentEntity> getAllCommentsFromUser(@PathVariable long id) {
 
 		if (!users.existsById(id)) {
 			throw new NoSuchElementException();

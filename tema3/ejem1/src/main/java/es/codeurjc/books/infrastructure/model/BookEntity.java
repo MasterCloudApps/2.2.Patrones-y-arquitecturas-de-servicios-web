@@ -1,4 +1,4 @@
-package es.codeurjc.books.model;
+package es.codeurjc.books.infrastructure.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +15,7 @@ import javax.persistence.OneToMany;
 import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
-public class Book {
+public class BookEntity {
 
 	public interface WithId {}
 	public interface Basic extends WithId {}
@@ -44,16 +44,25 @@ public class Book {
 
 	@JsonView(WithComment.class)
 	@OneToMany(mappedBy="book", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<Comment> comments;
+	private List<CommentEntity> comments;
 
-	public Book() {
+	public BookEntity() {
 	}
 
-	public Book(String title, String summary, String author, String editorial, int publishYear) {
-		this(title, summary, author, editorial, publishYear, new ArrayList<>());
+	public BookEntity(String title, String summary, String author, String editorial, int publishYear) {
+		this(null, title, summary, author, editorial, publishYear, new ArrayList<>());
 	}
 	
-	public Book(String title, String summary, String author, String editorial, int publishYear, List<Comment> comments) {
+	public BookEntity(Long id, String title, String summary, String author, String editorial, int publishYear) {
+		this(id, title, summary, author, editorial, publishYear, new ArrayList<>());
+	}
+
+	public BookEntity(String title, String summary, String author, String editorial, int publishYear, List<CommentEntity> comments) {
+		this(null, title, summary, author, editorial, publishYear, comments);
+	}
+
+	public BookEntity(Long id, String title, String summary, String author, String editorial, int publishYear, List<CommentEntity> comments) {
+		this.id = id;
 		this.title = title;
 		this.summary = summary;
 		this.author = author;
@@ -110,12 +119,12 @@ public class Book {
 		this.publishYear = publishYear;
 	}
 
-	public void addComment(Comment comment) {
+	public void addComment(CommentEntity comment) {
 		comments.add(comment);
 		comment.setBook(this);
 	}
 	
-	public void removeComment(Comment comment) {
+	public void removeComment(CommentEntity comment) {
 		boolean removed = comments.remove(comment);
 		if(!removed) {
 			throw new NoSuchElementException();
