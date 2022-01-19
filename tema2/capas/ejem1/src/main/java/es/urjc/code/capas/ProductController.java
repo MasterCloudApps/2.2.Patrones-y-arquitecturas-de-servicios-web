@@ -17,10 +17,17 @@ public class ProductController {
 	private ProductService productService;
 	
 	@GetMapping("/")
-	public List<ProductDTO> findAll() {
+	public List<ProductSummaryDTO> findAll() {
 
 		return productService.findAll();
 		
 	}
-	
+
+	@GetMapping("/{id}")
+	public List<ProductDTO> find(long id) {
+
+		return productService.findOne(id);
+		
+	}
+
 }

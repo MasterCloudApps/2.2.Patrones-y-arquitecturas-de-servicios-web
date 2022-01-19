@@ -19,18 +19,28 @@ public class ProductService {
 		this.modelMapper = modelMapper;
 	}
 	
-	public List<ProductDTO> findAll() {
+	public List<ProductSummaryDTO> findAll() {
 		List<Product> products = productRepository.findAll();
 		
 		return products.stream()
-				.map(this::convertToDto)
+				.map(this::convertToSummaryDto)
 				.collect(Collectors.toList());
+	}
+
+	public ProductDTO findOne(long id) {
+		Product product = productRepository.findById(id).get();
+
+		return convertToDto(product);
 	}
 
 	private ProductDTO convertToDto(Product product) {
 		return modelMapper.map(product, ProductDTO.class);
 	}
-	
+
+	private ProductSummaryDTO convertToSummaryDto(Product product) {
+		return modelMapper.map(product, ProductSummaryDTO.class);
+	}
+
 	@PostConstruct
 	public void init() {
 		Product p = new Product();
