@@ -1,4 +1,4 @@
-package es.codeurjc.books.domain;
+package es.codeurjc.books.domain.port;
 
 import java.util.Collection;
 import java.util.Optional;

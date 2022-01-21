@@ -1,6 +1,6 @@
 package es.codeurjc.books.controller;
 
-import es.codeurjc.books.domain.FullBookDto;
+import es.codeurjc.books.domain.port.FullBookDto;
 
 public class BookResponseDto {
 

@@ -9,9 +9,9 @@ import org.springframework.stereotype.Service;
 
 import es.codeurjc.books.controller.BookRequestDto;
 import es.codeurjc.books.controller.BookResponseDto;
-import es.codeurjc.books.domain.BookDto;
-import es.codeurjc.books.domain.BookUseCase;
-import es.codeurjc.books.domain.FullBookDto;
+import es.codeurjc.books.domain.port.BookDto;
+import es.codeurjc.books.domain.port.BookUseCase;
+import es.codeurjc.books.domain.port.FullBookDto;
 import es.codeurjc.books.infrastructure.model.BookEntity;
 import es.codeurjc.books.infrastructure.model.CommentEntity;
 import es.codeurjc.books.infrastructure.repository.BookJpaRepository;

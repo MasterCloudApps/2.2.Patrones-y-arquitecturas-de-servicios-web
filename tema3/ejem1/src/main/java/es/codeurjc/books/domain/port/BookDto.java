@@ -1,4 +1,4 @@
-package es.codeurjc.books.domain;
+package es.codeurjc.books.domain.port;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -3,6 +3,11 @@ package es.codeurjc.books.domain;
 import java.util.Collection;
 import java.util.Optional;
 
+import es.codeurjc.books.domain.port.BookDto;
+import es.codeurjc.books.domain.port.BookRepository;
+import es.codeurjc.books.domain.port.BookUseCase;
+import es.codeurjc.books.domain.port.FullBookDto;
+
 public class BookUseCaseImpl implements BookUseCase {
 
 	private BookRepository bookRepository;

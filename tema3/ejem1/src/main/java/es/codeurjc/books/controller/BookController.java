@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-import es.codeurjc.books.domain.FullBookDto;
+import es.codeurjc.books.domain.port.FullBookDto;
 import es.codeurjc.books.infrastructure.model.BookEntity;
 import es.codeurjc.books.infrastructure.model.CommentEntity;
 import es.codeurjc.books.infrastructure.model.UserEntity;

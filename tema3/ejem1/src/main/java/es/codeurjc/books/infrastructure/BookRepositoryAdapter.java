@@ -6,8 +6,8 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Component;
 
-import es.codeurjc.books.domain.BookRepository;
-import es.codeurjc.books.domain.FullBookDto;
+import es.codeurjc.books.domain.port.BookRepository;
+import es.codeurjc.books.domain.port.FullBookDto;
 import es.codeurjc.books.infrastructure.model.BookEntity;
 import es.codeurjc.books.infrastructure.repository.BookJpaRepository;
 

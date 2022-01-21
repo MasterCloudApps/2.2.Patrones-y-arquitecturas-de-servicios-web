@@ -1,6 +1,9 @@
-package es.codeurjc.books.domain;
+package es.codeurjc.books.domain.port;
 
 import java.util.List;
+
+import es.codeurjc.books.domain.Comment;
+import es.codeurjc.books.infrastructure.model.BookEntity;
 
 public class FullBookDto {
 	
@@ -16,7 +19,7 @@ public class FullBookDto {
 
 	private int publishYear;
 	
-	private List<Comment> comments;
+	private List<CommentDto> comments;
 	
 	public static FullBookDto fromBookDto(BookDto book) {
 		return new FullBookDto(
@@ -51,11 +54,11 @@ public class FullBookDto {
 		this.id = id;
 	}
 	
-	public List<Comment> getComments() {
+	public List<CommentDto> getComments() {
 		return comments;
 	}
 
-	public void setComments(List<Comment> comments) {
+	public void setComments(List<CommentDto> comments) {
 		this.comments = comments;
 	}
 
