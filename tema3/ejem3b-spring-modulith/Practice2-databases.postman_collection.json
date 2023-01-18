@@ -1,0 +1,1523 @@
+{
+	"info": {
+		"_postman_id": "1da6914c-a06c-42b8-8ec5-888510793d23",
+		"name": "Practice 2 - Databases",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "api/v1",
+			"item": [
+				{
+					"name": "users",
+					"item": [
+						{
+							"name": "Delete",
+							"item": [
+								{
+									"name": "Deletes user with comments",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/users/1",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"users",
+												"1"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "User can't be deleted because has associated comments",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/users/:userId",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"users",
+														":userId"
+													],
+													"variable": [
+														{
+															"key": "userId"
+														}
+													]
+												}
+											},
+											"status": "Conflict",
+											"code": 409,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										},
+										{
+											"name": "Invalid format id supplied",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/users/:userId",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"users",
+														":userId"
+													],
+													"variable": [
+														{
+															"key": "userId"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										},
+										{
+											"name": "User deleted",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/users/:userId",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"users",
+														":userId"
+													],
+													"variable": [
+														{
+															"key": "userId"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"id\": -26325811,\n \"nick\": \"do officia\",\n \"email\": \"ad quis Lorem veniam aliqua\"\n}"
+										},
+										{
+											"name": "User not found",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/users/:userId",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"users",
+														":userId"
+													],
+													"variable": [
+														{
+															"key": "userId"
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								},
+								{
+									"name": "Deletes user without comments",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/users/2",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"users",
+												"2"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "User not found",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/users/:userId",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"users",
+														":userId"
+													],
+													"variable": [
+														{
+															"key": "userId"
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										},
+										{
+											"name": "User can't be deleted because has associated comments",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/users/:userId",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"users",
+														":userId"
+													],
+													"variable": [
+														{
+															"key": "userId"
+														}
+													]
+												}
+											},
+											"status": "Conflict",
+											"code": 409,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										},
+										{
+											"name": "User deleted",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/users/:userId",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"users",
+														":userId"
+													],
+													"variable": [
+														{
+															"key": "userId"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"id\": -26325811,\n \"nick\": \"do officia\",\n \"email\": \"ad quis Lorem veniam aliqua\"\n}"
+										},
+										{
+											"name": "Invalid format id supplied",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/users/:userId",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"users",
+														":userId"
+													],
+													"variable": [
+														{
+															"key": "userId"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "Get all users",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/users/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"users",
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Found all users",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/users/",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"users",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n {\n  \"id\": 20980209,\n  \"nick\": \"nisi ipsum dolor nostrud\",\n  \"email\": \"irure cupidatat\"\n },\n {\n  \"id\": -88355362,\n  \"nick\": \"minim incididunt\",\n  \"email\": \"quis elit sunt sit\"\n }\n]"
+								},
+								{
+									"name": "Bad Request",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/users/",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"users",
+												""
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Create a new user",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"user3@email.es\",\n    \"nick\": \"user3\"\n}",
+									"options": {
+										"raw": {}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/users/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"users",
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Invalid user attributes supplied",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"email\": \"<string>\",\n    \"nick\": \"<string>\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/users/",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"users",
+												""
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Already exists an user with same nick",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"email\": \"<string>\",\n    \"nick\": \"<string>\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/users/",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"users",
+												""
+											]
+										}
+									},
+									"status": "Conflict",
+									"code": 409,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Created the user",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"email\": \"<string>\",\n    \"nick\": \"<string>\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/users/",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"users",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"id\": -26325811,\n \"nick\": \"do officia\",\n \"email\": \"ad quis Lorem veniam aliqua\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Get a user by its id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/users/1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"users",
+										"1"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Found the user",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/users/:userId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"users",
+												":userId"
+											],
+											"variable": [
+												{
+													"key": "userId"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"id\": -26325811,\n \"nick\": \"do officia\",\n \"email\": \"ad quis Lorem veniam aliqua\"\n}"
+								},
+								{
+									"name": "User not found",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/users/:userId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"users",
+												":userId"
+											],
+											"variable": [
+												{
+													"key": "userId"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Invalid format id supplied",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/users/:userId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"users",
+												":userId"
+											],
+											"variable": [
+												{
+													"key": "userId"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Updates user's email",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"new_user1@email.es\"\n}",
+									"options": {
+										"raw": {}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/users/1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"users",
+										"1"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "User with updated email",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"email\": \"<string>\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/users/:userId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"users",
+												":userId"
+											],
+											"variable": [
+												{
+													"key": "userId"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"id\": -26325811,\n \"nick\": \"do officia\",\n \"email\": \"ad quis Lorem veniam aliqua\"\n}"
+								},
+								{
+									"name": "Invalid email supplied",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"email\": \"<string>\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/users/:userId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"users",
+												":userId"
+											],
+											"variable": [
+												{
+													"key": "userId"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Get all user's comments",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/users/1/comments",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"users",
+										"1",
+										"comments"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Found all user's comments",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/users/:userId/comments",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"users",
+												":userId",
+												"comments"
+											],
+											"variable": [
+												{
+													"key": "userId"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n {\n  \"id\": 18748875,\n  \"comment\": \"in elit aliquip\",\n  \"score\": -45057650.01918291,\n  \"bookId\": -11011144\n },\n {\n  \"id\": -13392923,\n  \"comment\": \"deserunt culpa\",\n  \"score\": 58244527.84417358,\n  \"bookId\": 48988389\n }\n]"
+								},
+								{
+									"name": "Bad Request",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/users/:userId/comments",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"users",
+												":userId",
+												"comments"
+											],
+											"variable": [
+												{
+													"key": "userId"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "books",
+					"item": [
+						{
+							"name": "Get all books",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/books/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"books",
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Bad Request",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/books/",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"books",
+												""
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Found all books",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/books/",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"books",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n {\n  \"id\": 11546783,\n  \"title\": \"amet ut\"\n },\n {\n  \"id\": 92265725,\n  \"title\": \"voluptate veniam officia fu\"\n }\n]"
+								}
+							]
+						},
+						{
+							"name": "Create a new book",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"author\": \"Book 3 author\",\n    \"publisher\": \"Book 3 publisher\",\n    \"title\": \"Book 3\",\n    \"summary\": \"Book 3 summary\",\n    \"publicationYear\": 1996\n}",
+									"options": {
+										"raw": {}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/books/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"books",
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Invalid book attributes supplied",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"author\": \"<string>\",\n    \"publisher\": \"<string>\",\n    \"title\": \"<string>\",\n    \"summary\": \"<string>\",\n    \"publicationYear\": \"<integer>\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/books/",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"books",
+												""
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Created the book",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"author\": \"<string>\",\n    \"publisher\": \"<string>\",\n    \"title\": \"<string>\",\n    \"summary\": \"<string>\",\n    \"publicationYear\": \"<integer>\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/books/",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"books",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"id\": -75065501,\n \"title\": \"proident Lorem\",\n \"summary\": \"aliqua cillum ad\",\n \"author\": \"consectetur cupidatat sit\",\n \"publisher\": \"pariatur ad Ut esse\",\n \"publicationYear\": -21102146,\n \"score\": -46882879.41067632,\n \"comments\": [\n  {\n   \"id\": 93975018,\n   \"user\": \"pariatur qui sunt ullamco sint\",\n   \"comment\": \"e\",\n   \"score\": -23547299.36925222\n  },\n  {\n   \"id\": -15356224,\n   \"user\": \"cupidatat ut Duis culpa sit\",\n   \"comment\": \"laborum officia\",\n   \"score\": -22734883.842070013\n  }\n ]\n}"
+								}
+							]
+						},
+						{
+							"name": "Add a comment to a book",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"comment\": \"Book 1 comment\",\n    \"userNick\": \"user1\",\n    \"score\": 2.2\n}",
+									"options": {
+										"raw": {}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/books/1/comments/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"books",
+										"1",
+										"comments",
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Book not found",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"comment\": \"<string>\",\n    \"user\": \"<string>\",\n    \"score\": \"<float>\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/books/:bookId/comments/",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"books",
+												":bookId",
+												"comments",
+												""
+											],
+											"variable": [
+												{
+													"key": "bookId"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Invalid comment attributes supplied",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"comment\": \"<string>\",\n    \"user\": \"<string>\",\n    \"score\": \"<float>\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/books/:bookId/comments/",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"books",
+												":bookId",
+												"comments",
+												""
+											],
+											"variable": [
+												{
+													"key": "bookId"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Added comment to the book",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"comment\": \"<string>\",\n    \"user\": \"<string>\",\n    \"score\": \"<float>\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/books/:bookId/comments/",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"books",
+												":bookId",
+												"comments",
+												""
+											],
+											"variable": [
+												{
+													"key": "bookId"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"id\": 85040252,\n \"user\": \"officia occaecat cupidatat deser\",\n \"comment\": \"occaecat quis\",\n \"score\": 10974678.222464278\n}"
+								}
+							]
+						},
+						{
+							"name": "Delete a comment from a book",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/books/2/comments/1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"books",
+										"2",
+										"comments",
+										"1"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Deleted comment from the book",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/books/:bookId/comments/:commentId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"books",
+												":bookId",
+												"comments",
+												":commentId"
+											],
+											"variable": [
+												{
+													"key": "bookId"
+												},
+												{
+													"key": "commentId"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"id\": 85040252,\n \"user\": \"officia occaecat cupidatat deser\",\n \"comment\": \"occaecat quis\",\n \"score\": 10974678.222464278\n}"
+								},
+								{
+									"name": "Comment not found with passed bookId and commentId",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/books/:bookId/comments/:commentId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"books",
+												":bookId",
+												"comments",
+												":commentId"
+											],
+											"variable": [
+												{
+													"key": "bookId"
+												},
+												{
+													"key": "commentId"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Invalid format id supplied",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/books/:bookId/comments/:commentId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"books",
+												":bookId",
+												"comments",
+												":commentId"
+											],
+											"variable": [
+												{
+													"key": "bookId"
+												},
+												{
+													"key": "commentId"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Get a book by its id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/books/2",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"books",
+										"2"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Book not found",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/books/:bookId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"books",
+												":bookId"
+											],
+											"variable": [
+												{
+													"key": "bookId"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Invalid format id supplied",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/books/:bookId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"books",
+												":bookId"
+											],
+											"variable": [
+												{
+													"key": "bookId"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Found the book",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/books/:bookId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"books",
+												":bookId"
+											],
+											"variable": [
+												{
+													"key": "bookId"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"id\": -86041676,\n \"title\": \"reprehenderit sed ad sunt\",\n \"summary\": \"veniam\",\n \"author\": \"sed a\",\n \"publisher\": \"ex voluptate Lorem mollit esse\",\n \"publicationYear\": 49178020,\n \"score\": -65140956.43559421,\n \"comments\": [\n  {\n   \"id\": -22692299,\n   \"user\": \"dolore eiusmod\",\n   \"comment\": \"fugiat\",\n   \"score\": 3633478.4262623787\n  },\n  {\n   \"id\": -73508376,\n   \"user\": \"eu deserunt aliquip\",\n   \"comment\": \"eu consequat\",\n   \"score\": -42777333.84622078\n  }\n ]\n}"
+								}
+							]
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"variable": [
+		{
+			"id": "baseUrl",
+			"key": "baseUrl",
+			"value": "http://localhost:8080",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
+}
