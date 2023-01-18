@@ -1,0 +1,500 @@
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+- url: http://localhost:8080
+  description: Generated server url
+paths:
+  /users/{id}:
+    get:
+      tags:
+      - user-rest-controller
+      summary: Get a user by its id
+      operationId: getUserDetail
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "404":
+          description: user not found
+          content: {}
+        "200":
+          description: Found the user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDTO'
+    put:
+      tags:
+      - user-rest-controller
+      summary: Update a user
+      operationId: replaceUser
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserCreateDTO'
+        required: true
+      responses:
+        "404":
+          description: user not found
+          content: {}
+        "200":
+          description: user updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDTO'
+    delete:
+      tags:
+      - user-rest-controller
+      summary: Delete a user
+      operationId: deleteUser
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "404":
+          description: user not found
+          content: {}
+        "200":
+          description: user deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDTO'
+        "400":
+          description: "user has reviews, it can't be deleted"
+  /reviews/{id}:
+    get:
+      tags:
+      - review-rest-controller
+      summary: Get a review by its id
+      operationId: getReviewById
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "404":
+          description: review not found
+          content: {}
+        "200":
+          description: Found the review
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReviewDTO'
+    put:
+      tags:
+      - review-rest-controller
+      summary: Update a review
+      operationId: replaceReview
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReviewCreateDTO'
+        required: true
+      responses:
+        "404":
+          description: review not found
+          content: {}
+        "200":
+          description: review updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReviewDTO'
+    delete:
+      tags:
+      - review-rest-controller
+      summary: Delete a review
+      operationId: deleteReview
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "404":
+          description: review not found
+          content: {}
+        "200":
+          description: review deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReviewDTO'
+  /books/{id}:
+    get:
+      tags:
+      - book-rest-controller
+      summary: Get a book by its id
+      operationId: getBookDetail
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "404":
+          description: Book not found
+          content: {}
+        "200":
+          description: Found the book
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BookDTO'
+    put:
+      tags:
+      - book-rest-controller
+      summary: Update a book
+      operationId: replaceBook
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookCreateDTO'
+        required: true
+      responses:
+        "404":
+          description: Book not found
+          content: {}
+        "200":
+          description: Book updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BookDTO'
+    delete:
+      tags:
+      - book-rest-controller
+      summary: Delete a book
+      operationId: deleteBook
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "404":
+          description: Book not found
+          content: {}
+        "200":
+          description: Book deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BookDTO'
+  /users/:
+    get:
+      tags:
+      - user-rest-controller
+      summary: Get all users
+      operationId: getUsers
+      parameters:
+      - name: pageable
+        in: query
+        required: true
+        schema:
+          $ref: '#/components/schemas/Pageable'
+      responses:
+        "404":
+          description: Not Found
+        "200":
+          description: users found
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserDTO'
+    post:
+      tags:
+      - user-rest-controller
+      summary: Create new user
+      operationId: createUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserCreateDTO'
+        required: true
+      responses:
+        "404":
+          description: Not Found
+        "201":
+          description: user created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDTO'
+  /reviews/:
+    get:
+      tags:
+      - review-rest-controller
+      summary: Get all reviews
+      operationId: getReviews
+      parameters:
+      - name: pageable
+        in: query
+        required: true
+        schema:
+          $ref: '#/components/schemas/Pageable'
+      responses:
+        "404":
+          description: Not Found
+        "200":
+          description: reviews found
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ReviewDTO'
+    post:
+      tags:
+      - review-rest-controller
+      summary: Create new review
+      operationId: createReview
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReviewCreateDTO'
+        required: true
+      responses:
+        "404":
+          description: Not Found
+        "201":
+          description: review created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReviewDTO'
+  /books/:
+    get:
+      tags:
+      - book-rest-controller
+      summary: Get all books
+      operationId: getBooks
+      parameters:
+      - name: pageable
+        in: query
+        required: true
+        schema:
+          $ref: '#/components/schemas/Pageable'
+      - name: view
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        "404":
+          description: Not Found
+        "200":
+          description: Books found
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BookDTO'
+    post:
+      tags:
+      - book-rest-controller
+      summary: Create new book
+      operationId: createBook
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookCreateDTO'
+        required: true
+      responses:
+        "404":
+          description: Not Found
+        "201":
+          description: Book created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BookDTO'
+  /users/{id}/reviews:
+    get:
+      tags:
+      - user-rest-controller
+      summary: Get all reviews by user id
+      operationId: getReviewsByUserId
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "404":
+          description: user not found
+          content: {}
+        "200":
+          description: reviews from user found
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ReviewDTO'
+components:
+  schemas:
+    UserCreateDTO:
+      type: object
+      properties:
+        nick:
+          type: string
+        email:
+          type: string
+    UserDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        nick:
+          type: string
+        email:
+          type: string
+    ReviewCreateDTO:
+      type: object
+      properties:
+        comment:
+          type: string
+        rate:
+          type: integer
+          format: int32
+        userId:
+          type: integer
+          format: int64
+        bookId:
+          type: integer
+          format: int64
+    ReviewDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        comment:
+          type: string
+        rate:
+          type: integer
+          format: int32
+        userId:
+          type: integer
+          format: int64
+        bookId:
+          type: integer
+          format: int64
+    BookCreateDTO:
+      type: object
+      properties:
+        title:
+          type: string
+        resume:
+          type: string
+        author:
+          type: string
+        publishing:
+          type: string
+        year:
+          type: string
+    BookDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        title:
+          type: string
+        resume:
+          type: string
+        author:
+          type: string
+        publishing:
+          type: string
+        year:
+          type: string
+        reviews:
+          type: array
+          items:
+            $ref: '#/components/schemas/ReviewBasicDTO'
+    ReviewBasicDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        comment:
+          type: string
+        rate:
+          type: integer
+          format: int32
+        userId:
+          type: integer
+          format: int64
+    Pageable:
+      type: object
+      properties:
+        page:
+          minimum: 0
+          type: integer
+          format: int32
+        size:
+          minimum: 1
+          type: integer
+          format: int32
+        sort:
+          type: array
+          items:
+            type: string
